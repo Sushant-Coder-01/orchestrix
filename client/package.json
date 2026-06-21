@@ -1,0 +1,10 @@
+{
+  "name": "orchestrix-client",
+  "version": "1.0.0",
+  "description": "Frontend for Orchestrix Workflow Orchestration System",
+  "private": true,
+  "type": "module",
+  "scripts": {},
+  "author": "Sushant Mangore",
+  "license": "MIT"
+}

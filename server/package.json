@@ -1,0 +1,11 @@
+{
+  "name": "orchestrix-server",
+  "version": "1.0.0",
+  "description": "Backend service for Orchestrix - Event-Driven Workflow Orchestration System",
+  "main": "src/server.js",
+  "type": "module",
+  "private": "true",
+  "scripts": {},
+  "author": "Sushant Mangore",
+  "license": "MIT"
+}
