@@ -2,7 +2,7 @@
 
 Orchestrix is a full-stack system that runs business processes as step-by-step workflows using an event-driven architecture.
 
-It helps applications handle complex processes like approvals, notifications, and multi-step tasks in a structured and reliable way.
+It is designed to handle complex business operations like approvals, notifications, and multi-step processes in a structured, scalable, and reliable way.
 
 ---
 
@@ -10,21 +10,27 @@ It helps applications handle complex processes like approvals, notifications, an
 
 Most real-world applications are not simple CRUD systems.
 
-They need to handle workflows like:
+They need to manage **business workflows**, such as:
+
 - Loan approvals
 - Order processing
 - User onboarding
-- Request approvals
+- Approval-based requests
 
-These processes involve multiple steps, background tasks, and notifications.
+These processes involve multiple steps, background execution, and state tracking over time.
 
-In traditional systems, everything happens in one request, which leads to:
-- tight coupling
+### ❌ Problem with traditional systems:
+
+In typical applications, everything is handled in a single request-response cycle, which leads to:
+
+- tight coupling between logic
 - poor scalability
-- no proper tracking of steps
-- difficulty handling failures
+- no visibility of intermediate steps
+- difficulty handling failures and retries
 
-Orchestrix is built to solve this problem by introducing a structured workflow engine.
+### ✅ Solution:
+
+Orchestrix introduces a **workflow orchestration engine** that breaks processes into structured, trackable steps executed over time.
 
 ---
 
@@ -34,13 +40,36 @@ We are building a system that:
 
 - Converts user actions into events
 - Processes workflows step-by-step
-- Executes tasks in the background
+- Executes tasks asynchronously in the background
 - Sends real-time notifications
-- Tracks everything using audit logs
+- Maintains full audit history of all actions
 
-In simple terms:
+---
 
-> Orchestrix turns simple user actions into structured, trackable business workflows.
+# 💡 Simple Example (Important)
+
+Orchestrix is NOT a CRUD system.
+
+It does NOT simply store and return data.
+
+Instead, it manages **how work flows through a system over time.**
+
+### Example: Loan Approval
+
+1. User submits loan request
+2. Event is created: `LOAN_REQUESTED`
+3. Workflow starts:
+   - Step 1: Verify user details
+   - Step 2: Credit check
+   - Step 3: Manager approval
+   - Step 4: Final decision
+
+Each step:
+
+- runs in the background
+- updates system state
+- triggers notifications
+- is fully tracked in audit logs
 
 ---
 
@@ -54,24 +83,25 @@ User Action
 → Workflow Engine  
 → Step Execution  
 → Notifications  
-→ Audit Logs  
+→ Audit Logs
 
 ---
 
 # 🧩 Core Features
 
-- Workflow creation (multi-step processes)
-- Event-driven processing
-- Background job execution
-- Real-time notifications
+- Workflow creation (multi-step business processes)
+- Event-driven architecture
+- Background job processing
+- Real-time notifications (WebSockets)
 - Audit logging system
-- Role-based access control
+- Role-based access control (RBAC)
 
 ---
 
 # 🛠️ Tech Stack
 
-**Backend:**
+## Backend:
+
 - NestJS
 - PostgreSQL
 - Prisma
@@ -79,7 +109,8 @@ User Action
 - BullMQ
 - Socket.io
 
-**Frontend:**
+## Frontend:
+
 - Next.js
 - TypeScript
 - Tailwind CSS
@@ -90,11 +121,13 @@ User Action
 
 # 🎯 Goal of this project
 
-To understand how real-world backend systems are designed using:
+The goal is to understand and implement how real-world backend systems are designed using:
+
 - event-driven architecture
 - workflow orchestration
 - async processing
-- system design principles
+- state management across systems
+- system design principles used in production
 
 ---
 
