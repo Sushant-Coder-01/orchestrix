@@ -102,16 +102,17 @@ User Action
 
 ## Backend:
 
-- NestJS
+- Node.js
+- Express.js
 - PostgreSQL
-- Prisma
+- Prisma (ORM)
 - Redis
 - BullMQ
 - Socket.io
 
 ## Frontend:
 
-- Next.js
+- React.js
 - TypeScript
 - Tailwind CSS
 - TanStack Query

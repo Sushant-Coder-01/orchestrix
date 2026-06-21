@@ -8,7 +8,7 @@ Don’t move to the next step until the current step works end-to-end.
 
 ---
 
-# 🧱 PHASE 1 — FOUNDATION (Backend Setup + Core DB)
+# 🧱 PHASE 1 — FOUNDATION (Backend + DB Setup)
 
 ## ✅ Step 1: Project Setup
 
@@ -16,18 +16,19 @@ Create repo: `orchestrix`
 
 ### Backend:
 
-- NestJS project setup
+- Node.js + Express setup
 - Prisma setup
 - PostgreSQL connection
+- Basic folder structure
 
 ### Frontend:
 
-- Next.js project setup
+- React setup
 - Basic layout (ignore UI for now)
 
 ### ✔ Output:
 
-- Server runs
+- Server runs successfully
 - Database connected
 - Frontend opens
 
@@ -58,12 +59,12 @@ Create these tables:
 - Signup
 - Login
 - JWT authentication
-- Protect routes
+- Protected routes
 
 ### ✔ Output:
 
 - User can login
-- Token works
+- JWT token works
 
 ---
 
@@ -78,7 +79,9 @@ Build APIs:
 
 ### ✔ Output:
 
-You can define a workflow like:
+You can define a workflow structure like:
+
+- Step 1 → Step 2 → Step 3
 
 ---
 
@@ -88,16 +91,17 @@ You can define a workflow like:
 
 When user triggers workflow:
 
-- Create event record
+- Create event record in DB
 
-Example events:
+### Example events:
 
 - `WORKFLOW_STARTED`
+- `STEP_COMPLETED`
 - `STEP_APPROVED`
 
 ### ✔ Output:
 
-- Events stored in DB
+- Events stored successfully
 
 ---
 
@@ -106,10 +110,11 @@ Example events:
 - Setup Redis
 - Setup BullMQ worker
 - Push events to queue
+- Process jobs in background
 
 ### ✔ Output:
 
-- Events processed in background (async)
+- Async processing works
 
 ---
 
@@ -120,11 +125,12 @@ Build engine that:
 - Reads workflow definition
 - Finds current step
 - Executes step logic
+- Updates state
 - Moves to next step
 
 ### ✔ Output:
 
-- Workflow moves automatically step-by-step
+- Workflow runs step-by-step automatically
 
 ---
 
@@ -132,37 +138,38 @@ Build engine that:
 
 ## ✅ Step 8: Notifications System
 
-- Create notification table
+- Create notifications table
 - Trigger notifications on events
 
 ### ✔ Output:
 
-- Notifications stored
+- Notifications stored in DB
 
 ---
 
 ## ✅ Step 9: WebSockets (Socket.io)
 
-- Connect frontend + backend
+- Connect React frontend with backend
 - Push real-time updates
 
 ### ✔ Output:
 
-- User sees live updates
+- User sees live workflow updates
 
 ---
 
 ## ✅ Step 10: Audit Logs
 
-Log every action:
+Track every system action:
 
 - Event created
 - Step executed
-- Status change
+- Status changes
+- Failures / retries
 
 ### ✔ Output:
 
-- Full history tracking works
+- Full system history available
 
 ---
 
@@ -171,8 +178,8 @@ Log every action:
 ## ✅ Step 11: Dashboard UI
 
 - Workflow list
-- Active instances
-- Status cards
+- Active workflow instances
+- Status overview cards
 
 ---
 
@@ -180,21 +187,21 @@ Log every action:
 
 - Step-by-step visualization
 - Current step highlight
-- Timeline view
+- Timeline view of execution
 
 ---
 
 ## ✅ Step 13: Notifications UI
 
 - Real-time notification panel
-- Mark as read
+- Mark as read functionality
 
 ---
 
 ## ✅ Step 14: Audit Logs UI
 
-- Table view
-- Filter by workflow/user
+- Table view of all logs
+- Filter by workflow / user / status
 
 ---
 
@@ -202,124 +209,47 @@ Log every action:
 
 Every workflow should behave like this:
 
----
-
-# ⚙️ PHASE 2 — EVENT + EXECUTION ENGINE
-
-## ✅ Step 5: Event System
-
-When user triggers workflow:
-
-- Create event record
-
-Example events:
-
-- `WORKFLOW_STARTED`
-- `STEP_APPROVED`
-
-### ✔ Output:
-
-- Events stored in DB
+User Action  
+→ API Call  
+→ Event Created  
+→ Queue (Async Processing)  
+→ Workflow Engine  
+→ Step Execution  
+→ Notification Trigger  
+→ Audit Log Stored  
+→ Frontend Update (Realtime)
 
 ---
 
-## ✅ Step 6: Queue System (BullMQ + Redis)
+# 🚨 GOLDEN RULES
 
-- Setup Redis
-- Setup BullMQ worker
-- Push events to queue
+## ❌ Don’t:
 
-### ✔ Output:
+- Build UI first
+- Jump between backend and frontend randomly
+- Skip database design
+- Overcomplicate early architecture
 
-- Events processed in background (async)
+## ✅ Do:
 
----
-
-## ✅ Step 7: Workflow Engine (CORE LOGIC)
-
-Build engine that:
-
-- Reads workflow definition
-- Finds current step
-- Executes step logic
-- Moves to next step
-
-### ✔ Output:
-
-- Workflow moves automatically step-by-step
+- Finish backend first
+- Ensure full flow works end-to-end
+- Then build frontend
 
 ---
 
-# 🔔 PHASE 3 — REAL-TIME SYSTEM
+# 🏁 END RESULT
 
-## ✅ Step 8: Notifications System
+If you follow this properly, you will build:
 
-- Create notification table
-- Trigger notifications on events
-
-### ✔ Output:
-
-- Notifications stored
-
----
-
-## ✅ Step 9: WebSockets (Socket.io)
-
-- Connect frontend + backend
-- Push real-time updates
-
-### ✔ Output:
-
-- User sees live updates
+- Real workflow engine
+- Event-driven backend system
+- Async processing architecture
+- Real-time updates
+- Production-level system design project
 
 ---
 
-## ✅ Step 10: Audit Logs
+# 💡 ONE-LINE MINDSET
 
-Log every action:
-
-- Event created
-- Step executed
-- Status change
-
-### ✔ Output:
-
-- Full history tracking works
-
----
-
-# 🖥️ PHASE 4 — FRONTEND DASHBOARD
-
-## ✅ Step 11: Dashboard UI
-
-- Workflow list
-- Active instances
-- Status cards
-
----
-
-## ✅ Step 12: Workflow Viewer
-
-- Step-by-step visualization
-- Current step highlight
-- Timeline view
-
----
-
-## ✅ Step 13: Notifications UI
-
-- Real-time notification panel
-- Mark as read
-
----
-
-## ✅ Step 14: Audit Logs UI
-
-- Table view
-- Filter by workflow/user
-
----
-
-# 🧠 FINAL EXECUTION FLOW (IMPORTANT)
-
-Every workflow should behave like this:
+> You are building a system that processes work over time, not a simple CRUD application.
